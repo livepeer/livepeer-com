@@ -306,6 +306,16 @@ function setRecordingStatus(
       session.recordingUrl = getRecordingUrl(ingest, session);
       session.mp4Url = getRecordingUrl(ingest, session, true);
     }
+
+    // fire recording.ready webhook
+    req.queue.emit({
+      id: uuid(),
+      createdAt: Date.now(),
+      channel: "webhooks",
+      event:  isReady ? "recording.ready" : "recording.started",
+      streamId: session.parentId,
+      userId: session.userId,
+    })
   }
 }
 
