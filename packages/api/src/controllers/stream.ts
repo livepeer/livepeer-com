@@ -311,7 +311,7 @@ function setRecordingStatus(
       createdAt: Date.now(),
       channel: "webhooks",
       event:  isReady ? "recording.ready" : "recording.started",
-      streamId: session.streamId,
+      streamId: session.parentId,
       userId: session.userId,
     })
   }
