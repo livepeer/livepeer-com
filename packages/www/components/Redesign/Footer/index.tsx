@@ -114,7 +114,8 @@ const Footer = () => {
               onSubmit={handleSubmit}
               css={{ position: "relative" }}>
               <Logo isDark />
-              <Box
+              <Text
+                variant="gray"
                 css={{
                   pb: "$3",
                   display: "block",
@@ -124,7 +125,7 @@ const Footer = () => {
                 }}>
                 Join our newsletter to stay up to date on features and new
                 releases.
-              </Box>
+              </Text>
               <Box
                 css={{
                   position: "relative",

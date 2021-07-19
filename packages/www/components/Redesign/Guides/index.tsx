@@ -31,11 +31,14 @@ const Guides = ({ backgroundColor = "$panel" }) => {
           <Box
             css={{
               display: "grid",
-              grid: "1fr/repeat(4,1fr)",
+              grid: "1fr/repeat(2,1fr)",
               position: "relative",
               maxWidth: "1145px",
               height: "100%",
               margin: "0 auto",
+              "@bp2": {
+                grid: "1fr/repeat(4,1fr)",
+              },
             }}>
             <Box
               css={{
@@ -50,6 +53,10 @@ const Guides = ({ backgroundColor = "$panel" }) => {
                 background:
                   "linear-gradient(180deg, $colors$mauve4, $colors$mauve4 50%,transparent 0,transparent)",
                 backgroundSize: "1px 8px",
+                display: "none",
+                "@bp2": {
+                  display: "block",
+                },
               }}
             />
             <Box
@@ -58,6 +65,10 @@ const Guides = ({ backgroundColor = "$panel" }) => {
                 background:
                   "linear-gradient(180deg, $colors$mauve4, $colors$mauve4 50%,transparent 0,transparent)",
                 backgroundSize: "1px 8px",
+                display: "none",
+                "@bp1": {
+                  display: "block",
+                },
               }}
             />
             <Box
@@ -66,6 +77,10 @@ const Guides = ({ backgroundColor = "$panel" }) => {
                 background:
                   "linear-gradient(180deg, $colors$mauve4, $colors$mauve4 50%,transparent 0,transparent)",
                 backgroundSize: "1px 8px",
+                display: "none",
+                "@bp2": {
+                  display: "block",
+                },
               }}
             />
             <Box

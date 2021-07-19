@@ -17,10 +17,23 @@ const Hero = ({ heading, description, image }) => {
     <Box>
       <Guides backgroundColor="$loContrast" />
       <Box css={{ position: "relative" }}>
-        <Container size="3" css={{ px: "$4", width: "100%" }}>
+        <Container
+          size="3"
+          css={{
+            px: "$4",
+            mx: "$4",
+            "@bp3": {
+              px: "$4",
+              mx: "auto",
+            },
+          }}>
           <Flex
             align="center"
-            css={{ mb: 100, height: "calc(100vh - 180px)", width: "100%" }}
+            css={{
+              mb: 100,
+              height: "calc(100vh - 180px)",
+              width: "100%",
+            }}
             justify="between">
             <Flex direction="column" css={{ maxWidth: 700 }}>
               <Text
@@ -29,16 +42,20 @@ const Hero = ({ heading, description, image }) => {
                 css={{ fontWeight: 600, mb: "$5" }}>
                 Use cases
               </Text>
-              <Heading
-                size="4"
+              <Box
                 css={{
-                  lineHeight: "64px",
                   fontWeight: 700,
+                  fontSize: "$8",
+                  lineHeight: 1.3,
                   mb: "$6",
-                  "@bp2": { lineHeight: "68px", letterSpacing: "-1px" },
+                  "@bp2": {
+                    fontSize: "$9",
+                    lineHeight: "68px",
+                    letterSpacing: "-1px",
+                  },
                 }}>
                 {heading}
-              </Heading>
+              </Box>
               <Text
                 size="5"
                 variant="gray"
@@ -104,7 +121,16 @@ const Hero = ({ heading, description, image }) => {
                 </Link>
               </Flex>
             </Flex>
-            <Box css={{ mt: 40, position: "relative", mr: -120 }}>
+            <Box
+              css={{
+                mt: 40,
+                position: "relative",
+                mr: -120,
+                display: "none",
+                "@bp2": {
+                  display: "block",
+                },
+              }}>
               <Box
                 css={{
                   position: "absolute",
@@ -122,7 +148,8 @@ const Hero = ({ heading, description, image }) => {
                   borderRadius: 1000,
                   background:
                     "linear-gradient(90deg, rgba(107, 87, 214, 0.1) 0%, rgba(183, 167, 245, 0.1) 100%)",
-                }}></Box>
+                }}
+              />
             </Box>
           </Flex>
         </Container>

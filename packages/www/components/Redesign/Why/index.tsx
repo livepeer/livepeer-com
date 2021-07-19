@@ -67,9 +67,12 @@ const Why = ({ heading, reasons }) => {
           <Box
             css={{
               display: "grid",
-              grid: "1fr/repeat(4,1fr)",
+              grid: "1fr/repeat(2,1fr)",
               position: "relative",
               height: "100%",
+              "@bp2": {
+                grid: "1fr/repeat(4,1fr)",
+              },
             }}>
             {reasons.map((reason, i) => (
               <Box key={i} css={{ pl: "$4", pr: "$6", width: "100%" }}>

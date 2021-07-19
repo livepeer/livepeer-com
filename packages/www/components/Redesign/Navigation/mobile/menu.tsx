@@ -1,14 +1,9 @@
-import {
-  Box,
-  Flex,
-  Container,
-  Button,
-  Link as A,
-} from "@livepeer.com/design-system";
-import { FiX } from "react-icons/fi";
+import { Box, Flex, Container, Link as A } from "@livepeer.com/design-system";
 import { User } from "@livepeer.com/api";
 import Link from "next/link";
 import NavigationBreadcrumb, { BreadcrumbItem } from "../breadcrumb";
+import { Cross1Icon } from "@radix-ui/react-icons";
+import Button from "components/Redesign/Button";
 
 type Props = {
   links: any;
@@ -34,38 +29,31 @@ const Menu = ({
   return (
     <Box
       css={{
-        backgroundColor: "$panel",
         position: "fixed",
-        top: 0,
+        top: "$3",
+        left: "$3",
         height: mobileMenuIsOpen ? "100vh" : 0,
         transition: "height .2s",
+        borderRadius: "$3",
         overflow: "hidden",
-        width: "100%",
+        width: "calc(100% - $space$3 * 2)",
         zIndex: 1,
         visibility: mobileMenuIsOpen ? "visible" : "hidden",
       }}
       onClick={handleClick}>
+      <Box
+        css={{
+          top: "$3",
+          position: "absolute",
+          right: "$4",
+          cursor: "pointer",
+        }}
+        onClick={() => setMobileMenuIsOpen(false)}>
+        <Cross1Icon />
+      </Box>
       <Container
         css={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          py: "$3",
-          backgroundColor: "$panel",
-        }}>
-        <Box css={{ display: "flex", alignItems: "center" }}>
-          <NavigationBreadcrumb breadcrumb={breadcrumb} withLogoType={!token} />
-        </Box>
-        {/* <IconButton
-          css={{ fontSize: 6 }}
-          onClick={() => setMobileMenuIsOpen(false)}>
-          <FiX size="24px" />
-        </IconButton> */}
-      </Container>
-      <Container
-        css={{
-          pt: "$4",
-          pb: "$4",
+          pt: "$6",
           display: "flex",
           flexDirection: "column",
           height: `calc(100vh -70px)`,
@@ -73,38 +61,49 @@ const Menu = ({
         }}>
         <Flex css={{ flexDirection: "column" }}>
           {links.map((link) => (
-            <Link
-              {...link}
-              key={`menu-link-${link.href}`}
-              variant="mobileNav"
-            />
+            <Link href={link.href} key={`menu-link-${link.href}`} passHref>
+              <A
+                variant="violet"
+                css={{
+                  mb: "$4",
+                  "&:last-of-type": {
+                    mb: 0,
+                  },
+                }}>
+                {link.children}
+              </A>
+            </Link>
           ))}
           <Box as="hr" css={{ my: "$3", visibility: "hidden" }} />
-          {!!token ? (
-            <>
-              <Link href="dashboard" passHref>
-                <Button variant="violet">Dashboard</Button>
-              </Link>
-              {user && user.admin && (
-                <Link href="/app/admin" passHref>
-                  <A css={{ mt: "$3" }}>Admin</A>
-                </Link>
-              )}
-            </>
-          ) : (
-            <>
-              <Link href="/register" passHref>
-                <A>Sign up</A>
-              </Link>
-              <Link href="/login" passHref>
-                <Button css={{ mt: "$3" }} variant="violet">
-                  Login
-                </Button>
-              </Link>
-            </>
-          )}
         </Flex>
       </Container>
+      <Flex
+        css={{
+          p: "$3",
+          ai: "center",
+          justifyContent: "center",
+          backgroundColor: "$panel",
+          borderTop: "1px solid $mauve5",
+        }}>
+        {!!token ? (
+          <>
+            <Link href="dashboard" passHref>
+              <Button arrow>Dashboard</Button>
+            </Link>
+            {user && user.admin && (
+              <Link href="/app/admin" passHref>
+                <A css={{ ml: "$3" }}>Admin</A>
+              </Link>
+            )}
+          </>
+        ) : (
+          <>
+            <Link href="/login" passHref>
+              <Button arrow>Login</Button>
+            </Link>
+          </>
+        )}
+      </Flex>
     </Box>
   );
 };

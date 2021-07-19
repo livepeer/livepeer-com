@@ -7,6 +7,7 @@ import NavigationBreadcrumb, { BreadcrumbItem } from "./breadcrumb";
 import Link from "next/link";
 import Guides from "components/Redesign/Guides";
 import Button from "components/Redesign/Button";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 const sidesWidth = "250px"; // We provide the same value for the logo and the CTAs so the center links are really centered.
 
@@ -62,11 +63,11 @@ const NavigationBase = ({
           zIndex: mobileMenuIsOpen ? 22 : 22,
           "&:after": {
             position: "absolute",
-            bottom: "0",
-            left: "0",
+            bottom: 0,
+            left: 0,
             width: "100%",
             height: "1px",
-            margin: "0",
+            margin: 0,
             border: "none",
             background:
               "linear-gradient(90deg,$colors$mauve4,$colors$mauve4 50%,transparent 0,transparent)",
@@ -75,7 +76,16 @@ const NavigationBase = ({
           },
           ...css,
         }}>
-        <Container size="3" css={{ px: "$4" }}>
+        <Container
+          size="3"
+          css={{
+            px: "$4",
+            mx: "$4",
+            "@bp3": {
+              px: "$4",
+              mx: "auto",
+            },
+          }}>
           <Flex
             css={{
               py: "$4",
@@ -99,9 +109,6 @@ const NavigationBase = ({
                   display: "none",
                 },
                 "@bp2": {
-                  display: "none",
-                },
-                "@bp3": {
                   display: "flex",
                 },
               }}>
@@ -125,9 +132,6 @@ const NavigationBase = ({
                   display: "none",
                 },
                 "@bp2": {
-                  display: "none",
-                },
-                "@bp3": {
                   display: "flex",
                 },
                 ai: "center",
@@ -190,16 +194,22 @@ const NavigationBase = ({
                 </>
               )}
             </Flex>
-            {/* <IconButton
-            css={{
-              color: "black",
-              display: ["flex", "flex", "none"],
-              fontSize: 6,
-              flexShrink: 0,
-            }}
-            onClick={() => setMobileMenuIsOpen(true)}>
-            <FiMenu size="24px" />
-          </IconButton> */}
+            <Flex
+              css={{
+                backgroundColor: "$panel",
+                borderRadius: 20,
+                fontSize: 6,
+                py: "$1",
+                px: "$3",
+                cursor: "pointer",
+                flexShrink: 0,
+                "@bp2": {
+                  display: "none",
+                },
+              }}
+              onClick={() => setMobileMenuIsOpen(true)}>
+              <HamburgerMenuIcon />
+            </Flex>
           </Flex>
         </Container>
         <Menu

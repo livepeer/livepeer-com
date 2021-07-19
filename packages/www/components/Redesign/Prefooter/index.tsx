@@ -16,8 +16,8 @@ const Prefooter = () => (
     <Container size="3" css={{ px: "$4", py: 120, width: "100%" }}>
       <Box
         css={{
-          px: 72,
-          py: 126,
+          px: 40,
+          py: 80,
           textAlign: "center",
           position: "relative",
           overflow: "hidden",
@@ -26,6 +26,10 @@ const Prefooter = () => (
           background:
             "linear-gradient(90deg, $colors$blue9 0%, $colors$violet10 33%,  $colors$violet11 66%, $colors$violet11 100%);",
           backgroundSize: "cover",
+          "@bp2": {
+            px: 72,
+            py: 126,
+          },
         }}>
         <Heading
           size="4"
